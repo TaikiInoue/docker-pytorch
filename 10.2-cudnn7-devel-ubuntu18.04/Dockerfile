@@ -28,5 +28,6 @@ RUN set -xe \
         && /opt/conda/bin/conda install pytorch torchvision cudatoolkit=10.2 -c pytorch \
         && /opt/conda/bin/conda clean -ya \
         && pip install --no-cache-dir -r requirements.txt \
+        && pip install --no-cache-dir --upgrade hydra-core \
         && rm requirements.txt
 

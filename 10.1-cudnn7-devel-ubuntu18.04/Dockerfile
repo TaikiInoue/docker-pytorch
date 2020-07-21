@@ -1,5 +1,4 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
-
 ENV DEBIAN_FRONTEND=noninteractive 
 
 RUN set -xe \
@@ -29,5 +28,6 @@ RUN set -xe \
         && /opt/conda/bin/conda install pytorch torchvision cudatoolkit=10.1 -c pytorch \
         && /opt/conda/bin/conda clean -ya \
         && pip install --no-cache-dir -r requirements.txt \
+        && pip install --no-cache-dir --upgrade hydra-core \
         && rm requirements.txt
 

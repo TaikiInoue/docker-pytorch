@@ -13,10 +13,10 @@ PyYAML
 scikit-image
 scikit-learn
 scipy
-torch
 torchfile
 torchnet
 torchsummary
-torchvision
 tqdm
 typing
+autopep8
+flake8
