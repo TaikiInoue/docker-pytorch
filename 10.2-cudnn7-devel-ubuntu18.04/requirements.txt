@@ -18,5 +18,7 @@ torchnet
 torchsummary
 tqdm
 typing
-autopep8
+black
 flake8
+mypy
+nptyping

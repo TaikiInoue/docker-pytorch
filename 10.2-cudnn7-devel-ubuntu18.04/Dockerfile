@@ -1,17 +1,21 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
-ENV DEBIAN_FRONTEND=noninteractive 
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN set -xe \
-        && apt-get update \
+        && apt-get update -y \
         && apt-get install -y --no-install-recommends \
-            build-essential \
-            cmake \
-            git \
-            curl \
-            ca-certificates \
-            libjpeg-dev \
-            libpng-dev \
-        && rm -rf /var/lib/apt/lists/*
+        zsh \
+        openssh-server \
+        build-essential \
+        cmake \
+        git \
+        curl \
+        ca-certificates \
+        libjpeg-dev \
+        libpng-dev \
+        && rm -rf /var/lib/apt/lists/* \
+        && chsh -s $(which zsh)
+
 
 ARG PYTHON_VERSION=3.6.5
 ENV PATH /opt/conda/bin:$PATH

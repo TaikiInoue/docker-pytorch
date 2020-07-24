@@ -1,6 +1,8 @@
 docker run --runtime nvidia -it --rm \
     --network host \
-    --volume /home/inoue/github:/app/github \
+    --volume ~/github:/app/github \
+    --volume /home/inoue/.ssh:/root/.ssh \
+    --volume /home/inoue/.zshrc:/root/.zshrc \
     --workdir /app \
     --name torch \
     --hostname torch \
