@@ -1,1 +1,0 @@
-docker build -t taikiinoue45/pytorch:10.1-cudnn7-devel-ubuntu18.04 .
