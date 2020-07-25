@@ -1,0 +1,10 @@
+git
+openssh-server
+build-essential
+cmake
+curl
+ca-certificates
+libjpeg-dev
+libpng-dev
+tmux
+zsh
