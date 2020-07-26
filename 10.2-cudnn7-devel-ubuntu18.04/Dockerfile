@@ -1,8 +1,11 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /root
 
 
 COPY apt_requirements.txt apt_requirements.txt
+COPY .zshrc .zshrc
+COPY .tmux.conf .tmux.conf
 RUN set -xe \
         && apt-get update -y \
         && apt-get install -y --no-install-recommends $(cat apt_requirements.txt) \
@@ -29,4 +32,3 @@ RUN set -xe \
         && pip install --no-cache-dir -r pip_requirements.txt \
         && pip install --no-cache-dir --upgrade hydra-core \
         && rm pip_requirements.txt
-

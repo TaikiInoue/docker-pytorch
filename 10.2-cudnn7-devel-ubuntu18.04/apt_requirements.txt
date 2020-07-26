@@ -8,3 +8,4 @@ libjpeg-dev
 libpng-dev
 tmux
 zsh
+peco
