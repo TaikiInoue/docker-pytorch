@@ -32,3 +32,7 @@ RUN set -xe \
         && pip install --no-cache-dir -r pip_requirements.txt \
         && pip install --no-cache-dir --upgrade hydra-core \
         && rm pip_requirements.txt
+
+
+COPY entrypoint.sh entrypoint.sh
+ENTRYPOINT /root/entrypoint.sh
