@@ -1,5 +1,7 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
 WORKDIR /root
 
 
@@ -19,6 +21,7 @@ ARG PYTHON_VERSION=3.6.5
 ENV PATH /opt/conda/bin:$PATH
 ENV PATH /usr/local/cuda-10.2/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
+ENV PYTHONPATH /dgx/github/STAD:$PYTHONPATH
 
 COPY pip_requirements.txt pip_requirements.txt
 RUN set -xe \
