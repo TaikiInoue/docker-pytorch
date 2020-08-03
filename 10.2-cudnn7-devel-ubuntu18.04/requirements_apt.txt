@@ -11,3 +11,4 @@ libpng-dev
 tmux
 zsh
 peco
+vim
