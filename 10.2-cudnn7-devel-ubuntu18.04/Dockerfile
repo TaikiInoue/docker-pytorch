@@ -5,14 +5,12 @@ ENV LANG C.UTF-8
 WORKDIR /root
 
 
-COPY apt_requirements.txt apt_requirements.txt
-COPY .zshrc .zshrc
-COPY .tmux.conf .tmux.conf
+COPY requirements_apt.txt requirements_apt.txt
 RUN set -xe \
-        && apt-get update -y \
-        && apt-get install -y --no-install-recommends $(cat apt_requirements.txt) \
+        && apt update -y \
+        && apt install -y --no-install-recommends $(cat requirements_apt.txt) \
         && rm -rf /var/lib/apt/lists/* \
-        && rm apt_requirements.txt \
+        && rm requirements_apt.txt \
         && git config --global user.email "taikiinoue45@gmail.com" \
         && git config --global user.name "TaikiInoue"
 
@@ -23,7 +21,7 @@ ENV PATH /usr/local/cuda-10.2/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
 ENV PYTHONPATH /dgx/github/STAD:$PYTHONPATH
 
-COPY pip_requirements.txt pip_requirements.txt
+COPY requirements_pip.txt requirements_pip.txt
 RUN set -xe \
         && curl -o ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
         && chmod +x ~/miniconda.sh \
@@ -32,9 +30,9 @@ RUN set -xe \
         && /opt/conda/bin/conda install -y python=$PYTHON_VERSION \
         && /opt/conda/bin/conda install pytorch torchvision cudatoolkit=10.2 -c pytorch \
         && /opt/conda/bin/conda clean -ya \
-        && pip install --no-cache-dir -r pip_requirements.txt \
+        && pip install --no-cache-dir -r requirements_pip.txt \
         && pip install --no-cache-dir --upgrade hydra-core \
-        && rm pip_requirements.txt
+        && rm requirements_pip.txt
 
 
 COPY entrypoint.sh entrypoint.sh
