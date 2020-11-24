@@ -15,11 +15,17 @@ RUN set -xe \
         && git config --global user.name "TaikiInoue"
 
 
+RUN set -xe \
+        && wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list \
+        && apt update -y \
+        && apt install dvc
+
+
 ARG PYTHON_VERSION=3.6.5
 ENV PATH /opt/conda/bin:$PATH
 ENV PATH /usr/local/cuda-10.2/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
-ENV PYTHONPATH /dgx/github/STAD:$PYTHONPATH
+ENV PYTHONPATH /dgx/github/iSegmentation:$PYTHONPATH
 
 COPY requirements_pip.txt requirements_pip.txt
 RUN set -xe \
